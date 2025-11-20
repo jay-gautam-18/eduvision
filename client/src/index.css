@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply transition-colors duration-300;
+    }
+}
+
+@layer utilities {
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        @apply bg-transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 dark:bg-white/10 rounded-full hover:bg-gray-400 dark:hover:bg-white/20 transition-colors;
+    }
+
+    /* Spotlight animation */
+    @keyframes spotlight {
+        0% {
+            opacity: 0;
+            transform: translate(-72%, -62%) scale(0.5);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translate(-50%, -40%) scale(1);
+        }
+    }
+
+    .animate-spotlight {
+        animation: spotlight 2s ease 0.75s 1 forwards;
+    }
+
+    /* Loader spinner */
+    .loader {
+        width: 48px;
+        height: 48px;
+        border: 5px solid #FFF;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Fade In Animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in-long {
+        animation: fadeIn 1.5s ease-out forwards;
+    }
+
+    @keyframes shine {
+        0% {
+            transform: translateX(-100%);
+        }
+
+        50% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+}
+
+:root {
+    --sky-300: 203, 92%, 53%;
+    --gray-300: 0, 0%, 70%;
+}
